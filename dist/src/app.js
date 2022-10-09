@@ -10,6 +10,8 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const morgan_1 = __importDefault(require("morgan"));
 const index_1 = __importDefault(require("./routes/index"));
 const users_1 = __importDefault(require("./routes/users"));
+const books_1 = __importDefault(require("./routes/books"));
+const logger_middleware_1 = require("@/middlewares/logger.middleware");
 class App {
     constructor() {
         this.app = (0, express_1.default)();
@@ -26,10 +28,12 @@ class App {
         this.app.use(express_1.default.urlencoded({ extended: false }));
         this.app.use((0, cookie_parser_1.default)());
         this.app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
+        this.app.use(logger_middleware_1.requestLogger);
     }
     routerSetup() {
         this.app.use('/', index_1.default);
         this.app.use('/users', users_1.default);
+        this.app.use('/books', books_1.default);
     }
     errorHandler() {
         // catch 404 and forward to error handler

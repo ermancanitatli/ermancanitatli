@@ -1,12 +1,21 @@
 import express from 'express';
-import { getLogger } from '@/utils/loggers';
+import {getLogger} from '@/utils/loggers';
+import _userController from "@/controllers/userController";
+import _bookController from "@/controllers/bookController";
+import UsersValidator from "@/validator/users.validator";
+
 const router = express.Router();
-const logger = getLogger('USER_ROUTE');
+
+const userController = new _userController();
+const bookController = new _bookController();
+
 
 /* GET users listing. */
-router.get('/', function (_req, res, _next) {
-  logger.info('respond with a resource');
-  res.send('respond with a resource');
-});
+router
+    .get('/:id', UsersValidator.getUserValidator, userController.getUser)
+    .get('/', userController.getUsers)
+    .post('/', UsersValidator.createUserValidator, userController.createUser)
+    .post('/:userId/borrow/:bookId', UsersValidator.borrowBookValidator, bookController.borrowBook)
+    .post('/:userId/return/:bookId', UsersValidator.returnBookValidator, bookController.returnBook)
 
 export default router;

@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native","linux-arm64-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id    Int     @id @default(autoincrement())
+  books UserBooks[]
+  name  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum deliveryStatus {
+  BORROWED
+  DELIVERED
+}
+
+
+model UserBooks {
+
+  id Int @id @default(autoincrement())
+  userId Int
+  user  User    @relation(fields: [userId], references: [id])
+  bookId Int
+  book  Books    @relation(fields: [bookId], references: [id])
+  deliveryStatus deliveryStatus @default(BORROWED)
+  userScore  Int?
+  deliveryDate DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+   @@index([id], name: "IDX_93b566d522b73cb8bc46f74555")
+   @@index([userId], name: "IDX_93b566d522b73cb8bc46f7405b")
+   @@index([bookId], name: "IDX_a5e63f80ca58e7296d5864bd2d")
+}
+
+
+model Books {
+  id        Int     @id @default(autoincrement())
+  name     String
+  users UserBooks[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

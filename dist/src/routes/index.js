@@ -4,12 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const loggers_1 = require("@/utils/loggers");
 const router = express_1.default.Router();
-const logger = (0, loggers_1.getLogger)('INDEX_ROUTE');
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    logger.info('hello Express');
-    res.render('index', { title: 'Express' });
+    res.send('For Case Story - Erman Canıtatlı');
 });
 exports.default = router;
