@@ -9,7 +9,7 @@ const validator = (0, express_joi_validation_1.createValidator)();
 class BooksValidator {
     static createBookValidator(req, res, next) {
         const schema = joi_1.default.object({
-            name: joi_1.default.string().required()
+            name: joi_1.default.string().required().max(100).min(1)
         });
         validator.body(schema, { joi: { convert: true } })(req, res, next);
     }

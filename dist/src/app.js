@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const http_errors_1 = __importDefault(require("http-errors"));
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
@@ -15,9 +14,9 @@ const logger_middleware_1 = require("@/middlewares/logger.middleware");
 class App {
     constructor() {
         this.app = (0, express_1.default)();
+        this.errorHandler();
         this.config();
         this.routerSetup();
-        this.errorHandler();
     }
     config() {
         // view engine setup
@@ -37,8 +36,8 @@ class App {
     }
     errorHandler() {
         // catch 404 and forward to error handler
-        const requestHandler = function (_req, _res, next) {
-            next((0, http_errors_1.default)(404));
+        const requestHandler = function (req, res, next) {
+            next();
         };
         this.app.use(requestHandler);
         // error handler

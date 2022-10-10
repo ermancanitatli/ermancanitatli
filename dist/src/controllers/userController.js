@@ -8,10 +8,9 @@ const prisma = new client_1.PrismaClient();
 class userController {
     /** get specific user data */
     async getUser(req, res, next) {
-        const userId = req.params?.id;
         const user = await prisma.user.findUnique({
             where: {
-                id: +userId
+                id: +req.params?.id
             },
             select: {
                 id: true,
@@ -48,7 +47,7 @@ class userController {
     async createUser(req, res) {
         await prisma.user.create({
             data: {
-                name: "aaa"
+                name: req.body.name
             }
         });
         res.status(200).send();

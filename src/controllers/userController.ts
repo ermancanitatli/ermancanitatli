@@ -16,11 +16,10 @@ export default class userController {
     /** get specific user data */
     public async getUser(req: Request, res: Response, next: NextFunction) {
 
-        const userId = req.params?.id
 
         const user = await prisma.user.findUnique({
             where: {
-                id: +userId
+                id: +req.params?.id
             },
             select: {
                 id: true,
@@ -69,7 +68,7 @@ export default class userController {
 
         await prisma.user.create({
             data: {
-                name: "aaa"
+                name: req.body.name
             }
         } as any)
 

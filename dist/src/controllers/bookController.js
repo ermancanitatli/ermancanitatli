@@ -51,8 +51,16 @@ class bookController {
     }
     /** borrow book */
     async borrowBook(req, res) {
-        const userId = req.params.userId;
-        const bookId = req.params.bookId;
+        const { userId, bookId } = req.params;
+        const user = await prisma.user.findUnique({
+            where: {
+                id: +userId
+            }
+        });
+        console.log(user);
+        if (!user) {
+            res.status(404).send('user not found');
+        }
         const book = await prisma.books.findUnique({
             where: {
                 id: +bookId
@@ -89,6 +97,14 @@ class bookController {
     async returnBook(req, res) {
         const userId = req.params.userId;
         const bookId = req.params.bookId;
+        const user = await prisma.user.findUnique({
+            where: {
+                id: +userId
+            }
+        });
+        if (!user) {
+            res.status(400).send('user not found');
+        }
         const userBook = await prisma.userBooks.findFirst({
             where: {
                 bookId: +bookId,

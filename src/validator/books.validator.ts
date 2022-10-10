@@ -16,7 +16,7 @@ export default class BooksValidator {
     public static createBookValidator(req: Request, res: Response, next: NextFunction) {
 
         const schema = Joi.object({
-            name: Joi.string().required()
+            name: Joi.string().required().max(100).min(1)
         })
 
         validator.body(schema, {joi: {convert: true}})(req, res, next)

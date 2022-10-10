@@ -163,6 +163,11 @@
   "resolved" "https://registry.npmjs.org/@types/http-errors/-/http-errors-1.8.2.tgz"
   "version" "1.8.2"
 
+"@types/jabber@^1.2.0":
+  "integrity" "sha512-7lknvb0FFVCLgorYUh1RjJ/ps6trEQcr8GueQ/4tEPa4p3zzkKgcQaBUhswZI+wviHtahWLIrJO8mhL6RsIPbQ=="
+  "resolved" "https://registry.npmjs.org/@types/jabber/-/jabber-1.2.0.tgz"
+  "version" "1.2.0"
+
 "@types/mime@*":
   "integrity" "sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA=="
   "resolved" "https://registry.npmjs.org/@types/mime/-/mime-3.0.1.tgz"
@@ -962,6 +967,11 @@
   "integrity" "sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ=="
   "resolved" "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz"
   "version" "1.0.0"
+
+"jabber@^1.4.0":
+  "integrity" "sha512-FAaDE1Nt+8ff1sPevmiu9liy/moRkDnGX8P4yrrDK6G97fA4SNPumXKEFrdICNtWpfzE8T/60TbIEjrxk9YJAA=="
+  "resolved" "https://registry.npmjs.org/jabber/-/jabber-1.4.0.tgz"
+  "version" "1.4.0"
 
 "joi@17":
   "integrity" "sha512-+gqqdh1xc1wb+Lor0J9toqgeReyDOCqOdG8QSdRcEvwrcRiFQZneUCGKjFjuyBWUb3uaFOgY56yMaZ5FIc+H4w=="
