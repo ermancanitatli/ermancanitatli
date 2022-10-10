@@ -12,12 +12,7 @@
 
 ##### Last Step: Build && Start Express Server
 
-    npm run build
-    npm start
-
-##### Add dummy data
-
-    npm run dummy
+    npm run build && npm run start
 
 ------------
 
